@@ -249,7 +249,8 @@ should use it; but if it is too cumbersome, you are better off keeping a list of
   </pre>
   <p>And finally, here's the recursive backtracking routine to "solve" the binary tree by finding a goal node.
 </p>
-<pre>static boolean solvable(BinaryTree node) {
+<pre>
+   static boolean solvable(BinaryTree node) {
    /* 1 */  if (node == null) return false;
    /* 2 */  if (node.isGoalNode) return true;
    /* 3 */  if (solvable(node.leftChild)) return true;
@@ -257,8 +258,16 @@ should use it; but if it is too cumbersome, you are better off keeping a list of
    /* 5 */  return false;
    }
    </pre>
-   
+
    <p>Here's what the numbered lines are doing:</p>
+   <ol>
+      <li>If we are given a null node, it's not solvable. This statement is so that we can call this method with the
+         children of a node, without first checking whether those children actually exist.</li>
+        <li> If the node we are given is a goal node, return success.</li> 
+        <li>See if the left child of <b style="color:maroon;">node</b> is solvable, and if so, conclude that <b style="color:maroon;">node</b> is solvable. We will only get to
+         this line if <b style="color:maroon;">node</b> is non-null and is not a goal node, says to
+         </li>
+   </ol>
    <pre>
     #include <stdio.h>
         #include <stdlib.h>
