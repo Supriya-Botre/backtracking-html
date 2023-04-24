@@ -270,6 +270,41 @@ should use it; but if it is too cumbersome, you are better off keeping a list of
          <li>Do the same thing for the right child.</li>
          <li>Since neither child of <b style="color:maroon;">node</b> is solvable,  <b style="color:maroon;">node</b> itself is not solvable.</li>
    </ol>
+   <p>This program runs correctly and produces the unenlightening result <b style="color: maroon;">true</b>.
+   </p>
+   <p>Each time we ask for another node, we have to check if it is null. In the above we put that check as the first
+      thing in solvable. An alternative would be to check first whether each child exists, and recur only if they do.
+      Here's that alternative version:</p>
+      <pre>
+         static boolean solvable(BinaryTree node) {
+            if (node.isGoalNode) return true;
+            if (node.leftChild != null && solvable(node.leftChild)) return true;
+            if (node.rightChild != null && solvable(node.rightChild)) return true;
+            return false;
+        }
+        
+      </pre>
+      <p>I think the first version is simpler, but the second version is slightly more efficient.</p>
+      <h3>What are the children?</h3>
+      <p>One of the things that simplifies the above binary tree search is that, at each choice point, you can ignore all
+         the previous choices. Previous choices don't give you any information about what you should do next; as far as
+         you know, both the left and the right child are possible solutions. In many problems, however, you may be able
+         to eliminate children immediately, without recursion.
+         </p>
+         <p>Consider, for example, the problem of four-coloring a map. It is a theorem of mathematics that any map on a
+            plane, no matter how convoluted the countries are, can be colored with at most four colors, so that no two
+            countries that share a border are the same color.
+            </p>
+            <p>To color a map, you choose a color for the first country, then a color for the second country, and so on, until all
+               countries are colored. There are two ways to do this:
+               </p>
+               <ul>
+                  <li><b>Method 1. </b> Try each of the four possible colors, and recur. When you run out of countries, check whether
+                     you are at a goal node.
+                     </li>
+                  <li><b>Method 2. </b>Try only those colors that have not already been used for an adjacent country, and recur. If
+                     and when you run out of countries, you have successfully colored the map.</li>
+               </ul>
    <pre>
     #include <stdio.h>
         #include <stdlib.h>
