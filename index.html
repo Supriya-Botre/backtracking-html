@@ -1,39 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-     <meta charset="UTF-8">
-     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-     <title>Backtracking</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>Backtracking</h1>
+        <p>Copyright ©2002 by David</p>
 
-     <link rel="stylesheet" href="./css/style.css">
-</head>
-<body>
-      <h1>Back Tracking</h1>
-      <p><mark> Copyright &#169;2002 by David</mark></p>
+       <p> Backtracking is the form of <i>recursion.</i></p>
 
-      <p><strong>Backtracking</strong> is the <b>form</b> of <em>recursion.</em></p>
-      <p>Backtracking is a technique to solve dynamic programming problems. It works by going step by step and rejects those paths that do not lead to a solution and trackback (moves back ) to the previous position.</p>
-      <p>In the subset sum problem, we have to find the subset of a set is such a way <ins>that</ins> the element of this subset-sum up to a <del>given</del> number K. All the elements of the set are positive and unique (no duplicate elements are present).</p>
-      <p>a<sub>i</sub> = 40</p>
-      <p>26<sup>th</sup> December 2021 </p>
+<p>Backtracking is a technique to solve dynamic programming problems. It works by going step by step and rejects those paths that do not lead to a solution and trackback (moves back ) to the previous position.</p>
 
-     <center><img src="https://i.stack.imgur.com/nx9vl.gif" alt=""></center>
-     <ol>
-       <li>Starting at Root, your options are A and B. You choose A.</li>
-       <li>At A, your options are C and D. You choose C. </li>
-        <li >C is bad. Go back to A.</li>
-        <li>At A, you have already tried C, and it failed. Try D.</li>
-     </ol>
-     <ul type="square">
-        <li>Starting at Root, your options are A and B. You choose A.</li>
-        <li>At A, your options are C and D. You choose C. </li>
-         <li>C is bad. Go back to A.</li>
-         <li>At A, you have already tried C, and it failed. Try D.</li>
-      </ul>
+<p> the subset sum problem, we have to find the subset of a set is such a way that the element of this subset-sum up to a given number K. All the elements of the set are positive and unique (no duplicate elements are present).</p>
+<center><img src="./backtrack.png"></center>
+<ol>
+    <li>Starting at Root, your options are A and B. You choose A.</li>
+    <li>At A, your options are C and D. You choose C.</li>
+</ol>
+<h2>Backtracking Algorithm</h2>
+<p>A backtracking algorithm is a problem-solving algorithm that uses a brute force approach for finding the desired output.</p>
 
-      <a href="contact.html">Please share your contact.</a>
+<pre>
+    #include <stdio.h>
+        #include <stdlib.h>
+        static int total_nodes;
+        void printValues(int A[], int size){
+           for (int i = 0; i < size; i++) {
+              printf("%*d", 5, A[i]);
+           }
+           printf("
+        ");
+        }
+        void subset_sum(int s[], int t[], int s_size, int t_size, int sum, int ite, int const target_sum){
+           total_nodes++;
+           if (target_sum == sum) {
+              printValues(t, t_size);
+              subset_sum(s, t, s_size, t_size - 1, sum - s[ite], ite + 1, target_sum);
+              return;
+           }
+           else {
+              for (int i = ite; i < s_size; i++) {
+                 t[t_size] = s[i];
+                 subset_sum(s, t, s_size, t_size + 1, sum + s[i], i + 1, target_sum);
+              }
+           }
+        }
+       
+        int main(){
+           int set[] = { 5, 6, 12 , 54, 2 , 20 , 15 };
+           int size = sizeof(set) / sizeof(set[0]);
+           printf("The set is ");
+           printValues(set , size);
+           generateSubsets(set, size, 25);
+           printf("Total Nodes generated %d
+        ", total_nodes);
+           return 0;
+        }
+</pre>
 
-      
-    
-</body>
+
+<p>It uses the Brute force search to solve the problem, and the brute force search says that for the given problem, we try to make all the possible solutions and pick out the best solution from all the desired solutions.</p>
+<font size="4" color="green">
+    <pre>
+        int main(){
+         <font color="red"> /* 1 */ </font> int set[] = { 5, 6, 12 , 54, 2 , 20 , 15 };
+         <font color="red">/* 2 */ </font> int size = sizeof(set) / sizeof(set[0]);
+         <font color="red">/* 3 */ </font> printf("The set is ");
+         <font color="red">/* 4 */ </font> printValues(set , size);
+            <font color="red"> /* 5 */</font>  generateSubsets(set, size, 25);
+            printf("Total Nodes generated %d
+         ", total_nodes);
+            return 0;
+         }
+    </pre>
+</font> 
+<dl>
+
+    <dt>boolean mapIsOK()</dt>
+    <dd>used by method 1 to check</dd>
+</dl>
+
+
+    </body>
 </html>
