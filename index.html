@@ -58,8 +58,21 @@ of choices, your final state is a goal state; if you didn't, it isn't.
    searching.)
    </p>
   </div> 
-<h2>Backtracking Algorithm</h2>
-<p>A backtracking algorithm is a problem-solving algorithm that uses a brute force approach for finding the desired output.</p>
+<h2>The Backtracking Algorithm</h2>
+<div>
+   <pre>boolean solve(Node n) {
+      if n is a leaf node {
+          if the leaf is a goal node, return true
+          else return false
+      } else {
+          for each child c of n {
+              if solve(c) succeeds, return true
+          }
+          return false
+      }
+  }
+  </pre>
+</div>
 
 <pre>
     #include <stdio.h>
