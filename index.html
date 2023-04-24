@@ -267,6 +267,8 @@ should use it; but if it is too cumbersome, you are better off keeping a list of
         <li>See if the left child of <b style="color:maroon;">node</b> is solvable, and if so, conclude that <b style="color:maroon;">node</b> is solvable. We will only get to
          this line if <b style="color:maroon;">node</b> is non-null and is not a goal node, says to
          </li>
+         <li>Do the same thing for the right child.</li>
+         <li>Since neither child of <b style="color:maroon;">node</b> is solvable,  <b style="color:maroon;">node</b> itself is not solvable.</li>
    </ol>
    <pre>
     #include <stdio.h>
