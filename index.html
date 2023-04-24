@@ -210,6 +210,45 @@ should use it; but if it is too cumbersome, you are better off keeping a list of
    there are no cycles. For our purposes, although this is not part of the definition of a binary tree, we will say that
    a node might or might not be a goal node, and will contain its name. The first example in this paper (which we
    repeat here) shows a binary tree.</p>
+   <center><img src="./backtrack.png"></center>
+   <p>Here's a definition of the BinaryTree class:</p>
+   <pre>
+      public class BinaryTree {
+         BinaryTree leftChild = null;
+         BinaryTree rightChild = null;
+         boolean isGoalNode = false;
+         String name;
+         
+         BinaryTree(String name, BinaryTree left, BinaryTree right, boolean isGoalNode) {
+             this.name = name;
+             leftChild = left;
+             rightChild = right;
+             this.isGoalNode = isGoalNode;
+         }
+     }
+   </pre>
+   <p>Next we will create a TreeSearch class, and in it we will define a method makeTree() which constructs
+      the above binary tree.</p>
+      <pre>static BinaryTree makeTree() {
+         BinaryTree root, a, b, c, d, e, f;
+         c = new BinaryTree("C", null, null, false);
+         d = new BinaryTree("D", null, null, false);
+         e = new BinaryTree("E", null, null, true);
+         f = new BinaryTree("F", null, null, false);
+         a = new BinaryTree("A", c, d, false);
+         b = new BinaryTree("B", e, f, false);
+         root = new BinaryTree("Root", a, b, false);
+         return root;
+     }
+     </pre>
+     <p>Here's a main program to create a binary tree and try to solve it:</p>
+     <pre>public static void main(String args[]) {
+      BinaryTree tree = makeTree();
+      System.out.println(solvable(tree));
+  }
+  </pre>
+  <p>And finally, here's the recursive backtracking routine to "solve" the binary tree by finding a goal node.
+</p>
    <pre>
     #include <stdio.h>
         #include <stdlib.h>
