@@ -245,10 +245,18 @@ should use it; but if it is too cumbersome, you are better off keeping a list of
      <pre>public static void main(String args[]) {
       BinaryTree tree = makeTree();
       System.out.println(solvable(tree));
-  }
+  }   
   </pre>
   <p>And finally, here's the recursive backtracking routine to "solve" the binary tree by finding a goal node.
 </p>
+<pre>static boolean solvable(BinaryTree node) {
+   /* 1 */  if (node == null) return false;
+   /* 2 */  if (node.isGoalNode) return true;
+   /* 3 */  if (solvable(node.leftChild)) return true;
+   /* 4 */  if (solvable(node.rightChild)) return true;
+   /* 5 */  return false;
+   }
+   </pre>
    <pre>
     #include <stdio.h>
         #include <stdlib.h>
