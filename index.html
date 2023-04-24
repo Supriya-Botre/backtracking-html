@@ -5,6 +5,18 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
+        <style>
+         div {
+  margin-bottom: 15px;
+  padding: 4px 12px;
+}
+.info {
+  background-color: #e7f3fe;
+  border-left: 6px solid #2196F3;
+}
+
+
+        </style>
     </head>
     <body>
         <h1>Backtracking</h1>
@@ -39,11 +51,13 @@ of choices, your final state is a goal state; if you didn't, it isn't.
     <li>At B, your options are E and F. Try E.</li>
     <li>E is good. Congratulations!</li>
 </ol>
-<p>In this example we drew a picture of a tree. The tree is an abstract model of the possible sequences of choices
+<div>
+<p class="info">In this example we drew a picture of a tree. The tree is an abstract model of the possible sequences of choices
    we could make. There is also a data structure called a tree, but usually we don't have a data structure to tell us
    what choices we have. (If we do have an actual tree data structure, backtracking on it is called depth-first tree
    searching.)
    </p>
+  </div> 
 <h2>Backtracking Algorithm</h2>
 <p>A backtracking algorithm is a problem-solving algorithm that uses a brute force approach for finding the desired output.</p>
 
